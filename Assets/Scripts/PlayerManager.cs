@@ -6,6 +6,7 @@ using Photon;
 using Photon.Realtime;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
+using Unity.XR.CoreUtils;
 
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
@@ -28,14 +29,21 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             lefthand.gameObject.SetActive(false);
             righthand.gameObject.SetActive(false);
 
-            MapPosition(head, XRNode.Head);
-            MapPosition(lefthand, XRNode.LeftHand);
-            MapPosition(righthand, XRNode.RightHand);
-        }
+#if UNITY_ANDROID
+            head.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
+            lefthand.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
+            righthand.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
+#endif
 
+#if UNITY_STANDALONE_WIN
+            MapPositionVR(head, XRNode.Head);
+            MapPositionVR(lefthand, XRNode.LeftHand);
+            MapPositionVR(righthand, XRNode.RightHand);
+#endif
+        }
     }
 
-    private void MapPosition(Transform target, XRNode node)
+    private void MapPositionVR(Transform target, XRNode node)
     {
         InputDevices.GetDeviceAtXRNode(node).TryGetFeatureValue(UnityEngine.XR.CommonUsages.devicePosition, out Vector3 position);
         InputDevices.GetDeviceAtXRNode(node).TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceRotation, out Quaternion rotation);

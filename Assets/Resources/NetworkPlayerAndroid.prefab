@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 4825185474405080635}
   - component: {fileID: 1178268661983166680}
   m_Layer: 0
-  m_Name: NetworkPlayer
+  m_Name: NetworkPlayerAndroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

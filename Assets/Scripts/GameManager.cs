@@ -36,8 +36,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        print("YESSSSS");
+#if PLATFORM_STANDALONE_WIN
         PhotonNetwork.Instantiate("NetworkPlayer", new Vector3(0f, 0f, 0f), Quaternion.identity);
+#endif
+#if UNITY_ANDROID
+      PhotonNetwork.Instantiate("NetworkPlayerAndroid", new Vector3(0f, 0f, 0f), Quaternion.identity);
+#endif
         base.OnJoinedRoom();
     }
 

@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 3fc78b634d4504e45b03a1d7f32eff19
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Old School United
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ce24450aad5a3fa42809f46b16a16429, type: 3}
+  - {fileID: 12800000, guid: 0419ce247a81a304c817afc1e6dfc4dd, type: 3}
+  - {fileID: 12800000, guid: a585c4dc72c97d44abd00072afe5ff04, type: 3}
+  - {fileID: 12800000, guid: 492fb768148fc5c428271649e2df690a, type: 3}
+  - {fileID: 12800000, guid: 7b4c7672b09aa6d419459e5f2fa63118, type: 3}
+  - {fileID: 12800000, guid: 31f257bac7181eb4382148375f5fceac, type: 3}
+  - {fileID: 12800000, guid: 0437bcb3b8dd7aa4cb0f41ff86862c47, type: 3}
+  - {fileID: 12800000, guid: 18da6940343427443a91f69f24cf1317, type: 3}
+  - {fileID: 12800000, guid: ab45f934400c8ea43b8d2c3603b006fd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

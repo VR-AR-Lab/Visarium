@@ -37,6 +37,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject confirm;
     public GameObject reset;
 
+    public string nick;
+
     public void GoGroup(int ID)
     {
         player.PlayOneShot(click);
@@ -54,7 +56,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-        PhotonStartUp();
     }
 
     private void Start()
@@ -111,11 +112,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         player.PlayOneShot(click);
     }
-    //public void Logout()
-    //{
-    //    GetComponent<AuthManager>().FirebaseLogOut();
-    //    GoGroup(2);
-    //}
+    public void Logout()
+    {
+        GetComponent<AuthManager>().FirebaseLogOut();
+        GoGroup(2);
+    }
     public void ActiveResetGroup()
     {
         player.PlayOneShot(click);
@@ -151,8 +152,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            //PhotonNetwork.NickName = GetComponent<AuthManager>().User.DisplayName;
-            PhotonNetwork.NickName = $"Player {UnityEngine.Random.Range(1, 100)}";
+            PhotonNetwork.NickName = nick;//GetComponent<AuthManager>().User.DisplayName;
             RoomOptions roomOptions = new RoomOptions() { IsVisible = Visible, IsOpen = Public, MaxPlayers = (byte)max };
             PhotonNetwork.JoinOrCreateRoom(roomname.text, roomOptions, TypedLobby.Default);
         }
@@ -160,8 +160,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void ConnectToGameRoom(string roomname)
     {
-        //PhotonNetwork.NickName = GetComponent<AuthManager>().User.DisplayName;
-        PhotonNetwork.NickName = $"Player {UnityEngine.Random.Range(1, 100)}";
+        PhotonNetwork.NickName = nick;//GetComponent<AuthManager>().User.DisplayName;
         PhotonNetwork.JoinRoom(roomname);
     }
 

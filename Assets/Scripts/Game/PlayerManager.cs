@@ -7,6 +7,7 @@ using Photon.Realtime;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using Unity.XR.CoreUtils;
+using TMPro;
 
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
@@ -15,6 +16,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public Transform righthand;
 
     private PhotonView view;
+
+    public TMP_Text nick;
 
     private void Start()
     {
@@ -25,6 +28,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {
         if (view.IsMine)
         {
+            nick.text = photonView.Owner.NickName;
             head.gameObject.SetActive(false);
             lefthand.gameObject.SetActive(false);
             righthand.gameObject.SetActive(false);

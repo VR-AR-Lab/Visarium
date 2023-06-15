@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "209577464744",
+    "project_id": "visarium-4874e",
+    "storage_bucket": "visarium-4874e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209577464744:android:87caf64d3c2bbe706cc39d",
+        "android_client_info": {
+          "package_name": "com.VRARLab.Visarium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209577464744-0iccaf7rnd1pivnr2rdg5ujh39shd6i1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUg7alekxueThFhowKz8EM4AyvCiOuSXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209577464744-0iccaf7rnd1pivnr2rdg5ujh39shd6i1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

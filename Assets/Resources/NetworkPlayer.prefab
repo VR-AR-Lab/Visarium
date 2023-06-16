@@ -771,6 +771,7 @@ MonoBehaviour:
   head: {fileID: 1429670348295093444}
   lefthand: {fileID: 219516848905239784}
   righthand: {fileID: 4664119432949400868}
+  speaker: {fileID: 2907777637260436197}
   nick: {fileID: 7540472735691573782}
 --- !u!114 &3387519225101641774
 MonoBehaviour:

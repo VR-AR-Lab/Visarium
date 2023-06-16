@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public Transform head;
     public Transform lefthand;
     public Transform righthand;
+    public GameObject speaker;
 
     private PhotonView view;
 
@@ -22,13 +23,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         view = GetComponent<PhotonView>();
+        nick.text = view.Owner.NickName;
     }
 
     private void Update()
     {
         if (view.IsMine)
         {
-            nick.text = photonView.Owner.NickName;
+            speaker.SetActive(false); // CHECK!
             head.gameObject.SetActive(false);
             lefthand.gameObject.SetActive(false);
             righthand.gameObject.SetActive(false);
@@ -39,7 +41,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             righthand.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
 #endif
 
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WINk
             MapPositionVR(head, XRNode.Head);
             MapPositionVR(lefthand, XRNode.LeftHand);
             MapPositionVR(righthand, XRNode.RightHand);

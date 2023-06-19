@@ -14,7 +14,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public Transform head;
     public Transform lefthand;
     public Transform righthand;
-    public GameObject speaker;
 
     private PhotonView view;
 
@@ -30,7 +29,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {
         if (view.IsMine)
         {
-            speaker.SetActive(false); // CHECK!
             head.gameObject.SetActive(false);
             lefthand.gameObject.SetActive(false);
             righthand.gameObject.SetActive(false);

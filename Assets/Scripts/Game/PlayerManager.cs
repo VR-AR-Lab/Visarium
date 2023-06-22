@@ -39,6 +39,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             head.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
             lefthand.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
             righthand.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
+            //напюрхрэ бмхлюмхе ме намнбкъеряъ онбнпнр с йюлепш б юп
 #endif
 
 #if UNITY_STANDALONE_WIN

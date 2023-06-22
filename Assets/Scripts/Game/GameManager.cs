@@ -24,6 +24,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     void Start()
     {
-        PhotonNetwork.Instantiate("NetworkPlayer", new Vector3(0f, 0f, 0f), Quaternion.identity);
+        PhotonNetwork.Instantiate("NetworkPlayerUpd", new Vector3(0f, 0f, 0f), Quaternion.identity);
     }
 }

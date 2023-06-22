@@ -14,10 +14,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public Transform head;
     public Transform lefthand;
     public Transform righthand;
+    public GameObject[] avatar;
+    public TMP_Text nick;
 
     private PhotonView view;
-
-    public TMP_Text nick;
 
     private void Start()
     {
@@ -29,6 +29,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {
         if (view.IsMine)
         {
+            for(int i=0;i<avatar.Length;i++)
+                avatar[i].SetActive(false);
             head.gameObject.SetActive(false);
             lefthand.gameObject.SetActive(false);
             righthand.gameObject.SetActive(false);

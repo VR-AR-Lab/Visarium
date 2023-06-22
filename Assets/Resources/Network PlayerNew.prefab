@@ -2237,6 +2237,7 @@ MonoBehaviour:
   active:
   - {fileID: 3828638709290356337}
   - {fileID: 244224590546151544}
+  - {fileID: 6991129644106631381}
   headBodyPositionOffset: {x: 0, y: -0.54, z: 0}
   headBodyYawOffset: 0
   nick: {fileID: 2421707821485970963}

@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             righthand.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
 #endif
 
-#if UNITY_STANDALONE_WINk
+#if UNITY_STANDALONE_WIN
             MapPositionVR(head, XRNode.Head);
             MapPositionVR(lefthand, XRNode.LeftHand);
             MapPositionVR(righthand, XRNode.RightHand);

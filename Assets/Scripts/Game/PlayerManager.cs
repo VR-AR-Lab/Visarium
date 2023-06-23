@@ -37,8 +37,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
 #if UNITY_ANDROID
             head.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
+            head.transform.rotation = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.rotation;
             lefthand.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
+            lefthand.transform.rotation = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.rotation;
             righthand.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
+            righthand.transform.rotation = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.rotation;
             //Œ¡–¿“»“‹ ¬Õ»Ã¿Õ»≈ Õ≈ Œ¡ÕŒ¬Àﬂ≈“—ﬂ œŒ¬Œ–Œ“ ”  ¿Ã≈–€ ¬ ¿–
 #endif
 

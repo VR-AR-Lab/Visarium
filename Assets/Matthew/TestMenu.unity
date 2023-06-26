@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 126987597}
   - component: {fileID: 126987596}
   - component: {fileID: 126987595}
+  - component: {fileID: 126987598}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -260,10 +261,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1548859429}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -310,6 +311,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126987593}
   m_CullTransparentMesh: 1
+--- !u!114 &126987598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126987593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67401feec6ca98346b806246a616c73b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stage_1: {fileID: 0}
+  Stage_2: {fileID: 0}
 --- !u!1 &163182745
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,7 +723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &621174145
 Transform:
   m_ObjectHideFlags: 0
@@ -739,7 +754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &684505666
 RectTransform:
   m_ObjectHideFlags: 0

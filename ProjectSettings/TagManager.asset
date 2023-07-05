@@ -9,6 +9,7 @@ TagManager:
   - LeftHandVRTarget
   - RightHandVRTarget
   - Pencil
+  - Clear
   layers:
   - Default
   - TransparentFX

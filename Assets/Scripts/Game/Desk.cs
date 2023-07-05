@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI.Extensions;
 
 public class Desk : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Desk : MonoBehaviour
         if (other.tag == "Pencil")
         {
             line = PhotonNetwork.Instantiate("LineComponent", this.transform.position, Quaternion.identity);
+            line.transform.GetComponent<LineRenderer>().useWorldSpace = false;
             line.transform.parent = this.transform;
             oldposy = other.transform.position;
         }
@@ -24,11 +26,17 @@ public class Desk : MonoBehaviour
     {
         if (line != null)
         {
-            if (other.tag == "Pencil" && Vector3.Distance(oldposy, other.transform.position) > 0.1f)
+            var collisionPoint = other.ClosestPoint(transform.position);
+            var collisionNormal = transform.position - collisionPoint;
+            if (other.tag == "Pencil" && Vector3.Distance(oldposy, collisionNormal) > 0.1f)
             {
                 line.transform.GetComponent<LineRenderer>().positionCount++;
-                line.transform.GetComponent<LineRenderer>().SetPosition(line.transform.GetComponent<LineRenderer>().positionCount - 1, new Vector3(other.transform.position.x, other.transform.position.y, Zposy));
-                oldposy = other.transform.position;
+                line.transform.GetComponent<LineRenderer>().SetPosition(line.transform.GetComponent<LineRenderer>().positionCount - 1, new Vector3(-collisionNormal.x, -collisionNormal.y, Zposy));
+                oldposy = collisionNormal;
+                
+                Mesh mesh = new Mesh();
+                line.transform.GetComponent<LineRenderer>().BakeMesh(mesh, true);
+                line.transform.GetComponent<MeshCollider>().sharedMesh = mesh;
             }
         }
     }

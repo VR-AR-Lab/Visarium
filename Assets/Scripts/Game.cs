@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using System;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -29,15 +30,16 @@ public class Game : MonoBehaviour
     public List<TMP_Text> TextMeshProList4;
     public GameObject Reset;
 
-    private List<List<TMP_Text>> TextMeshProLists;
+    private List<List<TMP_Text>> TextMeshProLists = new List<List<TMP_Text>>();
     private List<GameObject> Skittles = new List<GameObject>();
     private GameObject sharx;
     private Vector3 pos;
     private int score;
     private int number;
-    private int numplayer;
+    private int numplayer=1;
     private int numgame;
     private int Playergame;
+    private List<int> xScore = new List<int>();
 
     public void Start()
     {
@@ -69,7 +71,7 @@ public class Game : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(sharx);
         sharx = Instantiate(ball, pos, Quaternion.identity);
-        for (int i = 0; i < Skittles.Count; i++)
+        for (int i = 0; i < 10; i++)
         {
             if (Skittles[i] != null)
             {
@@ -78,11 +80,11 @@ public class Game : MonoBehaviour
                     Destroy(Skittles[i]);
                     score++;
                 }
+       
             }
         }
         Score(score);
-        if (TextMeshProLists[numplayer - 1][19] == null)
-        {
+       
             if (number == 1)
             {
                 for (int i = 0; i < Skittles.Count; i++)
@@ -105,16 +107,15 @@ public class Game : MonoBehaviour
                 Spawn();
             }
             score = 0;
-        }
+        
     }
     public void Spawn()
     {
         for (int i = 0; i < spawn.Count; i++)
         {
-            Vector3 pos = new Vector3(spawn[i].transform.position.x, spawn[i].transform.position.y, spawn[i].transform.position.z);
-            GameObject go = Instantiate(pin, pos, Quaternion.identity);
+            GameObject go = Instantiate(pin, spawn[i].transform.position, Quaternion.identity);
             go.transform.SetParent(skittles.transform);
-            Skittles[i]=go;
+            Skittles[i]=go;   
         }
     }
     public void ChoosePlayer()
@@ -142,6 +143,10 @@ public class Game : MonoBehaviour
         playerchoose.SetActive(false);
         numgame = 0;
         Playergame = 0;
+        for (int i=0; i<4;i++)
+        {
+            xScore.Add(1);
+        }
         ChangePlayers();
     }
     public void ChangePlayers()
@@ -152,28 +157,59 @@ public class Game : MonoBehaviour
             Players[i].SetActive(true);
             i++;
         }
+        for (i = 0; i < numplayer; i++)
+        {
+            for (int j = 0; j < 20; j++)
+            {
+                TextMeshProLists[i][j].text = null;
+            }
+        }
         Spawn();
     }
     public void Score(int score)
     {
-        TextMeshProLists[Playergame][numgame].text = score.ToString();
-        numgame++;
-        if (Playergame < numplayer && numgame % 2 == 1)
+        if (Playergame < numplayer-1 && numgame % 2 == 0 && numgame > 0)
         {
             numgame -= 2;
             Playergame++;
         }
-        else
+        else if (Playergame == numplayer-1 && numgame % 2 == 0 && numgame > 0)
         {
             Playergame = 0;
         }
-        if (TextMeshProLists[numplayer - 1][19] != null)
+        if (numgame % 2 == 0 && score == 10)
+        {
+            TextMeshProLists[Playergame][numgame].text = "X";
+            numgame++;
+        }
+        else if (numgame % 2 == 1 && Convert.ToInt32(TextMeshProLists[Playergame][numgame - 1].text) + score == 10)
+        {
+            TextMeshProLists[Playergame][numgame].text = "/";
+        }
+        else TextMeshProLists[Playergame][numgame].text = score.ToString();
+        numgame++;
+        if (TextMeshProLists[numplayer - 1][19].text != null)
         {
             Reset.SetActive(true);
         }
     }
     public void ResetGame()
     {
+        for (int i = 0; i < numplayer; i++)
+        {
+            for (int j = 0; j < 20;  j++)
+            {
+                TextMeshProLists[i][j].text = null;
+            }
+        }
+        for (int i = 0; i < Skittles.Count; i++)
+        {
+            if (Skittles[i] != null)
+            {
+                Destroy(Skittles[i]);
+            }
+        }
+
         ChoosePlayer();
     }
     //private void Update()

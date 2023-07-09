@@ -42,8 +42,6 @@ public class CameraControllerPanel : MonoBehaviour, IPointerDownHandler,IPointer
         CVC.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_InputAxisValue = 0;
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         if (pressed)

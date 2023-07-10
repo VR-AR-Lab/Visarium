@@ -14,10 +14,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public Transform head;
     public Transform lefthand;
     public Transform righthand;
+    public GameObject[] avatar;
+    public TMP_Text nick;
 
     private PhotonView view;
-
-    public TMP_Text nick;
 
     private void Start()
     {
@@ -29,17 +29,23 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {
         if (view.IsMine)
         {
+            for(int i=0;i<avatar.Length;i++)
+                avatar[i].SetActive(false);
             head.gameObject.SetActive(false);
             lefthand.gameObject.SetActive(false);
             righthand.gameObject.SetActive(false);
 
 #if UNITY_ANDROID
             head.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
+            head.transform.rotation = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.rotation;
             lefthand.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
+            lefthand.transform.rotation = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.rotation;
             righthand.transform.position = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.position;
+            righthand.transform.rotation = GameObject.Find("XR_AR").transform.GetChild(0).transform.GetChild(0).transform.rotation;
+            //ÎÁÐÀÒÈÒÜ ÂÍÈÌÀÍÈÅ ÍÅ ÎÁÍÎÂËßÅÒÑß ÏÎÂÎÐÎÒ Ó ÊÀÌÅÐÛ Â ÀÐ
 #endif
 
-#if UNITY_STANDALONE_WINk
+#if UNITY_STANDALONE_WIN
             MapPositionVR(head, XRNode.Head);
             MapPositionVR(lefthand, XRNode.LeftHand);
             MapPositionVR(righthand, XRNode.RightHand);

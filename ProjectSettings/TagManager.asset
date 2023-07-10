@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - HeadVRTarget
+  - LeftHandVRTarget
+  - RightHandVRTarget
+  - Pencil
+  - Clear
   layers:
   - Default
   - TransparentFX

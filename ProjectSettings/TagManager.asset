@@ -10,11 +10,12 @@ TagManager:
   - RightHandVRTarget
   - Pencil
   - Clear
+  - Draggable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 

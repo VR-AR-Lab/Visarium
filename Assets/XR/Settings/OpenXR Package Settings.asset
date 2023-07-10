@@ -169,7 +169,6 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
---- !u!114 &-893126375441155782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,18 +238,6 @@ MonoBehaviour:
   m_Name: Android
   m_EditorClassIdentifier: 
   features:
-  - {fileID: 7533021479042161991}
-  - {fileID: 7015026237755643378}
-  - {fileID: 3095767522579717613}
-  - {fileID: -5075762641783032720}
-  - {fileID: 2469359456463899226}
-  - {fileID: 7804914122288871340}
-  - {fileID: -893126375441155782}
-  - {fileID: 3571135132816831225}
-  - {fileID: -1989042300186540177}
-  - {fileID: 8839780661409762270}
-  - {fileID: -3306429376246433202}
-  - {fileID: 2163871788652363850}
   m_renderMode: 1
   m_depthSubmissionMode: 0
 --- !u!114 &2009755763687128434
@@ -317,7 +304,6 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
---- !u!114 &2263359042456477914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

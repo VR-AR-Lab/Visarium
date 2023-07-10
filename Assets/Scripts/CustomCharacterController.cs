@@ -25,26 +25,25 @@ public class CustomCharacterController : MonoBehaviour{
     {
         animationInterpolation = Mathf.Lerp(animationInterpolation, 1.5f, Time.deltaTime * 3);
 
-        //anim.SetFloat("x", Input.GetAxis("Horizontal") * 1.5f);
-        //anim.SetFloat("y", Input.GetAxis("Vertical") * 1.5f);
 #if PLATFORM_ANDROID
        anim.SetFloat("x", horizontal * animationInterpolation);
        anim.SetFloat("y", vertical * animationInterpolation);
+#else
+        anim.SetFloat("x", Input.GetAxis("Horizontal") * 1.5f);
+        anim.SetFloat("y", Input.GetAxis("Vertical") * 1.5f);
 #endif
         currentSpeed = Mathf.Lerp(currentSpeed, runningSpeed, Time.deltaTime * 3);
     }
     void Walk()
     {
-        // Mathf.Lerp - отвчает за то, чтобы каждый кадр число animationInterpolation(в данном случае) приближалось к числу 1 со скоростью Time.deltaTime * 3.
-        // Time.deltaTime - это время между этим кадром и предыдущим кадром. Это позволяет плавно переходить с одного числа до второго НЕЗАВИСИМО ОТ КАДРОВ В СЕКУНДУ (FPS)!!!
         animationInterpolation = Mathf.Lerp(animationInterpolation, 1f, Time.deltaTime * 3);
 #if PLATFORM_ANDROID
         anim.SetFloat("x", horizontal * animationInterpolation);
         anim.SetFloat("y", vertical * animationInterpolation);
+#else
+        anim.SetFloat("x", Input.GetAxis("Horizontal") * animationInterpolation);
+        anim.SetFloat("y", Input.GetAxis("Vertical") * animationInterpolation);
 #endif
-
-       //anim.SetFloat("x", Input.GetAxis("Horizontal") * animationInterpolation);
-       //anim.SetFloat("y", Input.GetAxis("Vertical") * animationInterpolation);
 
         currentSpeed = Mathf.Lerp(currentSpeed, walkingSpeed, Time.deltaTime * 3);
     }
@@ -81,9 +80,10 @@ public class CustomCharacterController : MonoBehaviour{
         Vector3 camR = mainCamera.right;
         camF.y = 0;
         camR.y = 0;
-        //movingVector = Vector3.ClampMagnitude(camF.normalized * Input.GetAxis("Vertical") * currentSpeed + camR.normalized * Input.GetAxis("Horizontal") * currentSpeed, currentSpeed);
 #if PLATFORM_ANDROID
         movingVector = Vector3.ClampMagnitude(camF.normalized * vertical * currentSpeed + camR.normalized * horizontal * currentSpeed,currentSpeed);
+#else
+        movingVector = Vector3.ClampMagnitude(camF.normalized * Input.GetAxis("Vertical") * currentSpeed + camR.normalized * Input.GetAxis("Horizontal") * currentSpeed, currentSpeed);
 #endif
         anim.SetFloat("magnitude", movingVector.magnitude/currentSpeed);
         rig.velocity = new Vector3(movingVector.x, rig.velocity.y,movingVector.z);

@@ -8,6 +8,8 @@ public class PlaneRaycast : MonoBehaviour
 
     public Transform Pointer;
     bool Pressed = false;
+    bool Throw = false;
+    int throwPower=3;
     public float distantion;
     void Update()
     {
@@ -35,15 +37,30 @@ public class PlaneRaycast : MonoBehaviour
                     hit.rigidbody.isKinematic = false;
                 }
             }
+            if (Throw) {
+                hit.rigidbody.isKinematic = false;
+                hit.rigidbody.velocity = transform.forward * throwPower;
+                Pressed = false;
+                Throw = false;
+
+            }
         }
     }
-    public void onDown()
+    public void onUp()
     {
         Pressed = true;
     }
 
-    public void onUp()
+    public void onDown()
     {
         Pressed = false;
+    }
+    public void Pbrosok()
+    {
+        Throw = true;
+    }
+    public void Nbrosok()
+    {
+        Throw = false;
     }
 }

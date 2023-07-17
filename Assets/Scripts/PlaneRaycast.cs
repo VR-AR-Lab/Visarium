@@ -7,10 +7,18 @@ public class PlaneRaycast : MonoBehaviour
 {
 
     public Transform Pointer;
+    public Transform SphereHockey;
     bool Pressed = false;
     bool Throw = false;
+    bool Hit = false;
     int throwPower=3;
     public float distantion;
+    public float speed;
+    Rigidbody rb;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     void Update()
     {
         Camera cameraAr = Camera.main;
@@ -44,12 +52,26 @@ public class PlaneRaycast : MonoBehaviour
                 Throw = false;
 
             }
+           /* if (Hit)
+            {
+                //hit.rigidbody.velocity = transform.forward * throwPower;
+                SphereHockey.GetComponent<Rigidbody>().velocity = cameraAr.transform.position + cameraAr.transform.forward * 3;
+                
+            }*/
         }
+    }
+    /*public void hitHockey()
+    {
+        Hit=true;
+    }
+    public void AnHitHockey()
+    {
+        Hit=false;
     }
     public void onUp()
     {
         Pressed = true;
-    }
+    }*/
 
     public void onDown()
     {

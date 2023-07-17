@@ -11,6 +11,7 @@ TagManager:
   - Pencil
   - Clear
   - Draggable
+  - Goal
   layers:
   - Default
   - TransparentFX

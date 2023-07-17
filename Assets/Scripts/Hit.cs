@@ -8,13 +8,11 @@ public class Hit : MonoBehaviour
     public Transform Goal;
     public Transform SphereHockey;
     bool Hits = false;
-    // Start is called before the first frame update
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         Camera cameraAr = Camera.main;
@@ -27,7 +25,6 @@ public class Hit : MonoBehaviour
         }
         if (Hits)
         {
-            //hit.rigidbody.velocity = transform.forward * throwPower;
             SphereHockey.GetComponent<Rigidbody>().velocity = cameraAr.transform.position + cameraAr.transform.forward * 3;
             float distantion = Vector3.Distance(SphereHockey.position, Goal.transform.position);
             if (distantion >= 2)

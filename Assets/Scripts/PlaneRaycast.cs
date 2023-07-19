@@ -57,6 +57,10 @@ public class PlaneRaycast : MonoBehaviour
     {
         Pressed = false;
     }
+    public void onUp()
+    {
+        Pressed = true;
+    }
     public void Pbrosok()
     {
         Throw = true;

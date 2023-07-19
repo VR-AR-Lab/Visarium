@@ -32,15 +32,14 @@ public class PlaneRaycast : MonoBehaviour
             {
                 if (Pressed)
                 {
-                    if (hit.collider.tag == "Draggable")
+                    if (hit.collider.CompareTag("Draggable"))
                         hit.transform.position = cameraAr.transform.position + cameraAr.transform.forward *3;
                     hit.rigidbody.isKinematic = true;
 
                     Debug.Log("Take target");
                 }
-                else if (!Pressed)
+                else
                 {
-                    Pressed = false;
                     hit.rigidbody.isKinematic = false;
                 }
             }

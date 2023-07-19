@@ -12,6 +12,8 @@ TagManager:
   - Clear
   - Draggable
   - Goal
+  - Earth
+  - house
   layers:
   - Default
   - TransparentFX

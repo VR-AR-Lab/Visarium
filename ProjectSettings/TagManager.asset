@@ -14,6 +14,9 @@ TagManager:
   - Goal
   - Earth
   - house
+  - road
+  - stone
+  - LaserRaycast
   layers:
   - Default
   - TransparentFX

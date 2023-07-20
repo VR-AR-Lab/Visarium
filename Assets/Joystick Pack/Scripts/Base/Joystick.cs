@@ -47,7 +47,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         baseRect = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         if (canvas == null)
-            Debug.LogError("The Joystick is not placed inside a canvas");
+        Debug.Log(Enums.Result.JNPlased.ToString());
 
         Vector2 center = new Vector2(0.5f, 0.5f);
         background.pivot = center;
@@ -98,7 +98,9 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private float SnapFloat(float value, AxisOptions snapAxis)
     {
         if (value == 0)
+        {
             return value;
+        }
 
         if (axisOptions == AxisOptions.Both)
         {
@@ -122,9 +124,13 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         else
         {
             if (value > 0)
+            {
                 return 1;
-            if (value < 0)
+            }
+            else if (value < 0)
+            {
                 return -1;
+            }
         }
         return 0;
     }
@@ -146,5 +152,4 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         return Vector2.zero;
     }
 }
-
 public enum AxisOptions { Both, Horizontal, Vertical }

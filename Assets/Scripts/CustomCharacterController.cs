@@ -70,7 +70,7 @@ public class CustomCharacterController : MonoBehaviour{
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            anim.SetTrigger("Jump");
+            anim.SetTrigger(Enums.Result.Jump.ToString());
         }
     }
     void FixedUpdate()

@@ -9,56 +9,63 @@ public class Hit : MonoBehaviour
     public Transform Goal;
     public Transform SphereHockey;
     [SerializeField] private TextMeshProUGUI _textOut;
-    bool Hits = false;
+    bool Hits;
+    int attempt;
+    int count;
 
-    void Update()
+    void FixedUpdate()
     {
         if (Hits)
         {
-            SphereHockey.GetComponent<Rigidbody>().velocity =  (Pointer.transform.position =
-                new Vector3(Pointer.transform.position.x, 0, Pointer.transform.position.z));
+            SphereHockey.GetComponent<Rigidbody>().velocity =
+            new Vector3(Pointer.transform.position.x, 0, Pointer.transform.position.z);
+            //SphereHockey.transform.rotation =Quaternion.Euler(0, 0,0);
         }
+        FixedUpdate();
     }
     void OnCollisionEnter(Collision collision)
     {
-        int popitka = 0;
-        int count = 0;
         float distantions = Vector3.Distance(Goal.transform.position, SphereHockey.transform.position);
-        if (collision.gameObject.CompareTag("Goal"))
+        if (collision.gameObject.CompareTag(Enums.Tag.TagGoal.ToString()))
         {
-            Debug.Log("You Win Round");
+            Debug.Log(Enums.Result.Win.ToString());//w
             Goal.GetComponent<Renderer>().material.color = Color.green;
-            popitka += 1;
+            attempt += 1;
             count = 60;
             Hits = false;
-            SphereHockey.transform.position= SphereHockey.transform.position =
-                new Vector3(78.88f, 22.01f, 42.18f); ;
+            _textOut.text = "";
+            SphereHockey.transform.position= transform.position =
+                new Vector3(0, 0, 0); ;
         }
         else if (distantions >= 5.0f)
         {
-            Debug.Log("Distance exceeded");
+            Debug.Log(Enums.Result.Distance.ToString());//d
             Goal.GetComponent<Renderer>().material.color = Color.red;
-            popitka += 1;
+            attempt += 1;
             count += 10;
             Hits = false;
         }
-        else if (!collision.gameObject.CompareTag("Goal")
-            && !collision.gameObject.CompareTag("Earth") 
-            && !collision.gameObject.CompareTag("Player"))
+        else if (!collision.gameObject.CompareTag(Enums.Tag.TagGoal.ToString())
+            && !collision.gameObject.CompareTag(Enums.Tag.TagEarth.ToString()) 
+            && !collision.gameObject.CompareTag(Enums.Tag.TagPlayer.ToString()))
         {
-            popitka += 1;
+            attempt += 1;
             count += 10;
             Hits = false;
         }
-        else if (popitka == 4)
+        else if (attempt == 4)
         {
-            Debug.Log("You Lose!");
+            Debug.Log(Enums.Result.Lose.ToString());
             Goal.GetComponent<Renderer>().material.color = Color.red;
             Hits = false;
+            attempt = 0;
+            count = 0;
             _textOut.text = "";
+            SphereHockey.transform.position = transform.position =
+            new Vector3(0, 0, 0);
         }
-        _textOut.text = "pop " + popitka.ToString() + "\n"
-    + "count " + count.ToString();
+        _textOut.text = "pop " + attempt.ToString() + "\n"
+         + "count " + count.ToString();
     }
     public void hitHockey()
     {

@@ -8,14 +8,15 @@ public class PlaneRaycast : MonoBehaviour
 
     public Transform Pointer;
     public Transform SphereHockey;
-    bool Pressed = false;
-    bool Throw = false;
+    bool Pressed;
+    bool Throw;
     int throwPower=3;
     public float distantion;
     public float speed;
     Rigidbody rb;
     private void Start()
     {
+        Pressed = false;
         rb = GetComponent<Rigidbody>();
     }
     void Update()
@@ -32,23 +33,28 @@ public class PlaneRaycast : MonoBehaviour
             {
                 if (Pressed)
                 {
-                    if (hit.collider.CompareTag("Draggable"))
-                        hit.transform.position = cameraAr.transform.position + cameraAr.transform.forward *3;
-                    hit.rigidbody.isKinematic = true;
+                    if (hit.collider.CompareTag(Enums.Tag.TagDraggable.ToString()) && !hit.collider.CompareTag(Enums.Tag.TagEarth.ToString())
+                    && !hit.collider.CompareTag(Enums.Tag.TagRoad.ToString()))
+                    {
+                        hit.transform.position = cameraAr.transform.position + cameraAr.transform.forward * 3;
+                        hit.rigidbody.isKinematic = true;
 
-                    Debug.Log("Take target");
+                        Debug.Log(Enums.Result.TTarget.ToString());
+                    }
                 }
-                else
+                else if(!Pressed && !hit.collider.CompareTag(Enums.Tag.TagEarth.ToString())
+                    && !hit.collider.CompareTag(Enums.Tag.TagRoad.ToString()))
                 {
                     hit.rigidbody.isKinematic = false;
                 }
             }
-            if (Throw) {
+            if (Throw)
+            {
+                Debug.Log(Enums.Result.Thrown.ToString());
                 hit.rigidbody.isKinematic = false;
                 hit.rigidbody.velocity = transform.forward * throwPower;
                 Pressed = false;
                 Throw = false;
-
             }
         }
     }

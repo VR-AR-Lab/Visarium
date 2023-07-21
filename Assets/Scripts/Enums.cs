@@ -13,6 +13,7 @@ public static class Enums
         public static readonly string TagHouse = "house";
         public static readonly string TagRoad = "road";
         public static readonly string TagStone = "stone";
+        public static readonly string TagClushka = "clushka";
     }
     public class Result
     {

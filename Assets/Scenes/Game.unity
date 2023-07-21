@@ -2679,6 +2679,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 606207044}
   - {fileID: 1118654982}
   - {fileID: 113156742}
   - {fileID: 357102026}
@@ -5614,10 +5615,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.0628448
+  m_Radius: 0.33901548
+  m_Height: 1.6829492
   m_Direction: 1
-  m_Center: {x: 0, y: 0.80505633, z: 0}
+  m_Center: {x: 0, y: 0.93281263, z: 0.16098452}
 --- !u!54 &357102029
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9373,7 +9374,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -10985,14 +10986,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589800820}
-  m_LocalRotation: {x: 0.23795463, y: -0, z: -0, w: 0.97127634}
-  m_LocalPosition: {x: -0.09, y: -0.443, z: -0.187}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: -0.33, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 142699585}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 27.532, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &589800822
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11104,9 +11105,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pointer: {fileID: 606207044}
+  Person: {fileID: 357102026}
+  Clushka: {fileID: 1437635076}
   Goal: {fileID: 1379833414}
+  Camera: {fileID: 481829672}
   SphereHockey: {fileID: 589800821}
   _textOut: {fileID: 1106843239}
+  MoveSpeed: 3
 --- !u!1001 &589823200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11265,6 +11270,7 @@ GameObject:
   - component: {fileID: 606207044}
   - component: {fileID: 606207046}
   - component: {fileID: 606207045}
+  - component: {fileID: 606207048}
   m_Layer: 0
   m_Name: SphereTarget
   m_TagString: LaserRaycast
@@ -11280,11 +11286,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606207043}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -960.026, y: -466.45816, z: 2.0108109}
-  m_LocalScale: {x: 0.045405407, y: 0.045405407, z: 0.045405407}
+  m_LocalPosition: {x: -0.040039062, y: 0.87701416, z: 3.1}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1118654982}
+  m_Father: {fileID: 142699585}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &606207045
@@ -11337,6 +11343,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606207043}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &606207048
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606207043}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &614558850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20704,6 +20737,7 @@ GameObject:
   - component: {fileID: 1118654985}
   - component: {fileID: 1118654984}
   - component: {fileID: 1118654983}
+  - component: {fileID: 1118654986}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -20723,7 +20757,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 606207044}
   - {fileID: 467622072}
   - {fileID: 295128936}
   m_Father: {fileID: 142699585}
@@ -20797,6 +20830,33 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!54 &1118654986
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118654981}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1129980932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20931,11 +20991,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!4 &1144999019 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -6874584590210671055, guid: eff68b785c4d0d944844fe087ef13779, type: 3}
-  m_PrefabInstance: {fileID: 2139909500}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1147909184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21694,6 +21749,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 60f048e3ccfd7d0498e095661396963b, type: 3}
+--- !u!4 &1184119069 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3480699329000672020, guid: eff68b785c4d0d944844fe087ef13779, type: 3}
+  m_PrefabInstance: {fileID: 2139909500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1184228689
 GameObject:
   m_ObjectHideFlags: 0
@@ -24090,7 +24150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358927796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.546, y: 0, z: 0}
+  m_LocalPosition: {x: 3.72, y: 0.28, z: 2.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24219,9 +24279,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pointer: {fileID: 606207044}
+  Person: {fileID: 0}
+  Clushka: {fileID: 0}
   Goal: {fileID: 1379833414}
+  Camera: {fileID: 0}
   SphereHockey: {fileID: 589800821}
   _textOut: {fileID: 0}
+  MoveSpeed: 3
 --- !u!54 &1379833416
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24268,8 +24332,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.41368616
+  m_Center: {x: 0, y: -2.5894256, z: 9.345663e-11}
 --- !u!23 &1379833418
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25222,8 +25286,8 @@ GameObject:
   - component: {fileID: 1437635078}
   - component: {fileID: 1437635077}
   m_Layer: 3
-  m_Name: Cube
-  m_TagString: Earth
+  m_Name: Clushka
+  m_TagString: clushka
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25235,12 +25299,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437635075}
-  m_LocalRotation: {x: -0.58810556, y: -0.6060408, z: 0.1197267, w: 0.52202684}
-  m_LocalPosition: {x: 0.116, y: -0.18, z: 0.583}
-  m_LocalScale: {x: 0.050000004, y: 0.100000046, z: 2}
+  m_LocalRotation: {x: 0.63423187, y: -0.27768624, z: 0.678492, w: 0.2455377}
+  m_LocalPosition: {x: -0.12220954, y: -0.4352311, z: 0.12063277}
+  m_LocalScale: {x: 0.05000002, y: 0.1000001, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1144999019}
+  m_Father: {fileID: 1184119069}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 46.272, y: 0, z: 0}
 --- !u!65 &1437635077
@@ -25262,8 +25326,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.5131962, z: 1}
+  m_Center: {x: 0.000000024214833, y: -0.24340221, z: -0.000000006998538}
 --- !u!23 &1437635078
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32878,7 +32942,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: eff68b785c4d0d944844fe087ef13779, type: 3}
       insertIndex: 0
       addedObject: {fileID: 481829672}
-    - targetCorrespondingSourceObject: {fileID: -6874584590210671055, guid: eff68b785c4d0d944844fe087ef13779, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -3480699329000672020, guid: eff68b785c4d0d944844fe087ef13779, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1437635076}
     - targetCorrespondingSourceObject: {fileID: 8700783698680967558, guid: eff68b785c4d0d944844fe087ef13779, type: 3}

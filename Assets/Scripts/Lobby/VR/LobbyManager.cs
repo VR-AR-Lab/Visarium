@@ -36,8 +36,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject registr;
     public GameObject confirm;
     public GameObject reset;
+    LoadScript loadScript;
 
     public string nick;
+    LoadScript load;
 
     public void GoGroup(int ID)
     {
@@ -61,7 +63,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         scrollRect.verticalNormalizedPosition = 1;
-        errortxt.text = "";
+        errortxt.text = "";  
     }
 
     public void SetGroup(string roomname, int countPlayers, int maxPlayers)
@@ -155,6 +157,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             PhotonNetwork.NickName = nick;//GetComponent<AuthManager>().User.DisplayName;
             RoomOptions roomOptions = new RoomOptions() { IsVisible = Visible, IsOpen = Public, MaxPlayers = (byte)max };
             PhotonNetwork.JoinOrCreateRoom(roomname.text, roomOptions, TypedLobby.Default);
+            
         }
     }
 
@@ -166,7 +169,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Game");
+        // PhotonNetwork.LoadLevel("Game"); //load.LoadAssetBundleScene();
+        //PhotonNetwork.LoadLevel("Game");
         base.OnJoinedRoom();
     }
 

@@ -36,7 +36,8 @@ public class Hit : MonoBehaviour
 
         float dist = Vector3.Distance(Clushka.transform.position, SphereHockey.transform.position);
         float distantion = Vector3.Distance(Goal.transform.position, SphereHockey.transform.position);
-        if (!collision.gameObject.CompareTag(Enums.Tag.TagClushka.ToString()) && !collision.gameObject.CompareTag(Enums.Tag.TagEarth)
+        if (!collision.gameObject.CompareTag(Enums.Tag.TagClushka.ToString())
+            && !collision.gameObject.CompareTag(Enums.Tag.TagEarth)
             && !collision.gameObject.CompareTag(Enums.Tag.TagPlayer.ToString()))
         {
             Hits = false;

@@ -9624,6 +9624,7 @@ MonoBehaviour:
   confirm: {fileID: 1994703926}
   reset: {fileID: 2078969047}
   nick: 
+  url: https://firebasestorage.googleapis.com/v0/b/hghlklk-e08bf.appspot.com/o/testscene?alt=media&token=17601838-0e07-45ff-86be-8d16b5f61d2d
 --- !u!4 &742365173
 Transform:
   m_ObjectHideFlags: 0
@@ -20603,7 +20604,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993436570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76afe41e2630d8e4a8bdcd55e70e7d63, type: 3}
   m_Name: 

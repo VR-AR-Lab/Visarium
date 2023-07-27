@@ -8,6 +8,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -39,7 +40,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     LoadScript loadScript;
 
     public string nick;
-    LoadScript load;
+    public string url;
+    static AssetBundle assetBundle;
+    private string SceneNameToLoad;
 
     public void GoGroup(int ID)
     {
@@ -62,8 +65,38 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        StartCoroutine(DownloadFiles());
         scrollRect.verticalNormalizedPosition = 1;
         errortxt.text = "";  
+    }
+    [System.Obsolete]
+    IEnumerator DownloadFiles()
+    {
+        if (!assetBundle)
+        {
+            using WWW www = new(url);
+            Debug.Log("in using www");
+            yield return www;
+            if (!string.IsNullOrEmpty(www.error))
+            {
+                Debug.LogError(www.error);
+                yield break;
+            }
+            assetBundle = www.assetBundle;
+        }
+
+        string[] scenes = assetBundle.GetAllScenePaths();
+        Debug.Log("scenes.Length:: " + scenes.Length);
+        foreach (string scenename in scenes)
+        {
+            SceneNameToLoad = Path.GetFileNameWithoutExtension(scenename).ToString();
+            Debug.Log("SceneNamesInPath(foreach):: " + Path.GetFileNameWithoutExtension(scenename));
+        }
+    }
+    public void LoadAssetBundleScene()
+    {
+        SceneManager.LoadScene(SceneNameToLoad);
+        Debug.Log("Clicked on button to play the scene");
     }
 
     public void SetGroup(string roomname, int countPlayers, int maxPlayers)
@@ -158,6 +191,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             RoomOptions roomOptions = new RoomOptions() { IsVisible = Visible, IsOpen = Public, MaxPlayers = (byte)max };
             PhotonNetwork.JoinOrCreateRoom(roomname.text, roomOptions, TypedLobby.Default);
             
+            
         }
     }
 
@@ -169,9 +203,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        // PhotonNetwork.LoadLevel("Game"); //load.LoadAssetBundleScene();
+        // PhotonNetwork.LoadLevel("Game");
         //PhotonNetwork.LoadLevel("Game");
-        base.OnJoinedRoom();
+        LoadAssetBundleScene();
+        //base.OnJoinedRoom();
     }
 
     private void OnDestroyRoomPrefab(string roomname)
